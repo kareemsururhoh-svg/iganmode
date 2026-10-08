@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Iganmode Grammar School, Ota</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#f5f7fb}
+header{background:#00205b;color:white;padding:12px 20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}
+.logo-box{display:flex;align-items:center;gap:10px;font-weight:bold;font-size:17px}
+.logo-box img{height:45px;border-radius:50%;background:white;padding:2px}
+.logo-box span{display:block;font-size:11px;font-weight:normal}
+nav a{color:white;text-decoration:none;margin-left:12px;font-size:14px;cursor:pointer}
+.btn-nav{background:white;color:#00205b;padding:7px 16px;border-radius:20px;font-weight:bold;display:inline-block}
+.hero{background:linear-gradient(135deg,#00205b,#003a9e);color:white;text-align:center;padding:75px 20px}
+.hero-logo{height:115px;border-radius:50%;background:white;padding:5px;margin-bottom:15px}
+.btn-main{background:#ffcc00;color:#000;padding:13px 30px;border-radius:30px;font-weight:bold;display:inline-block;margin:6px;cursor:pointer;border:0}
+.btn-main.outline{background:transparent;border:2px solid white;color:white}
+.section{padding:55px 20px;text-align:center;max-width:1050px;margin:auto}
+.section.grey{background:#eef2f9;border-radius:15px;margin-top:20px}
+.cards{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:25px}
+.card{background:white;padding:22px;width:240px;border-radius:12px;box-shadow:0 4px 12px #0001}
+.contact-box{background:white;display:inline-block;padding:22px 32px;border-radius:12px;text-align:left;line-height:2.1;box-shadow:0 4px 12px #0001;margin-top:15px}
+.form-box{max-width:390px;margin:35px auto;background:white;padding:32px;border-radius:14px;box-shadow:0 8px 25px #0002;border-top:7px solid #00205b;text-align:center}
+.form-box h2{color:#00205b;margin-bottom:18px}
+.form-box input,select{width:100%;padding:12px;margin:8px 0;border:1px solid #ccc;border-radius:8px;font-size:14px}
+.form-box button{width:100%;padding:13px;background:#00205b;color:white;border:0;border-radius:8px;font-weight:bold;font-size:15px;cursor:pointer;margin-top:10px}
+.form-box button:hover{background:#003a9e}
+.label-small{font-size:12px;text-align:left;display:block;margin:8px 0 2px 2px;color:#00205b;font-weight:bold}
+.dashboard{display:flex;min-height:75vh}
+.side{width:220px;background:#eef2f9;padding:18px;display:flex;flex-direction:column;gap:9px}
+.side button{padding:12px;background:white;border:0;border-radius:8px;cursor:pointer;font-weight:bold;text-align:left}
+.side button:hover{background:#00205b;color:white}
+.main{flex:1;padding:26px;background:white;margin:14px;border-radius:12px}
+.main table{width:100%;border-collapse:collapse;margin-top:14px}
+.main th{background:#00205b;color:white}
+.main th,.main td{padding:11px;border:1px solid #ddd}
+.hidden{display:none}
+footer{background:#00205b;color:white;text-align:center;padding:16px;margin-top:25px;font-size:13px}
+</style>
+</head>
+<body>
+
+<header>
+<div class="logo-box"><img src="logo.png"><div>IGANMODE GRAMMAR SCHOOL<span>Ota - Est. 1960</span></div></div>
+<nav>
+<a onclick="showPage('landing')">Home</a>
+<a onclick="showPage('register')">Register</a>
+<a onclick="showPage('login')" class="btn-nav">Login</a>
+</nav>
+</header>
+
+<!-- LANDING -->
+<div id="page-landing">
+<div class="hero">
+<img src="logo.png" class="hero-logo">
+<h1>Welcome to Iganmode Grammar School</h1>
+<p>Discipline, Knowledge & Character</p>
+<button class="btn-main" onclick="showPage('register')">Create Account</button>
+<button class="btn-main outline" onclick="showPage('login')">Login to Portal</button>
+</div>
+<section class="section grey">
+<h2>Contact Information</h2>
+<div class="contact-box">
+<p><b>🏫 Address:</b> Iganmode Grammar School Road, Ota, Ogun State</p>
+<p><b>📞 Phone:</b> 08064838161</p>
+<p><b>📧 Email:</b> kareemsururhoh@gmail.com</p>
+<p><b>👩‍🏫 Principal:</b> Miss SURURHOH</p>
+</div>
+</section>
+</div>
+
+<!-- REGISTER - WITH CREATE PASSWORD BEFORE CONFIRM -->
+<div id="page-register" class="hidden">
+<div class="form-box">
+<img src="logo.png" style="height:70px;border-radius:50%">
+<h2>Create Account</h2>
+<select id="role"><option value="">Select Role</option><option value="student">Student</option><option value="parent">Parent</option><option value="teacher">Teacher</option></select>
+<input id="rName" placeholder="Full Name e.g Adebayor Emmanuel">
+<input id="rEmail" placeholder="Email Address">
+<span class="label-small">Create Password</span>
+<input id="rPass" type="password" placeholder="Create Password">
+<span class="label-small">Confirm Password</span>
+<input id="rConfirmPass" type="password" placeholder="Confirm Password">
+<input id="rClass" placeholder="Class e.g SS2">
+<input id="rChild" placeholder="If Parent: Enter Child Email">
+<button onclick="doRegister()">Create Account</button>
+<p style="margin-top:12px;font-size:14px">Already have account? <a onclick="showPage('login')" style="color:#00205b;font-weight:bold;cursor:pointer">Login here</a></p>
+</div>
+</div>
+
+<!-- LOGIN - ENTER PASSWORD -->
+<div id="page-login" class="hidden">
+<div class="form-box">
+<img src="logo.png" style="height:70px;border-radius:50%">
+<h2>Portal Login</h2>
+<span class="label-small">Email Address</span>
+<input id="lEmail" placeholder="Enter Email">
+<span class="label-small">Enter Password</span>
+<input id="lPass" type="password" placeholder="Enter Password">
+<button onclick="doLogin()">Login</button>
+<p style="margin-top:12px;font-size:14px">No account? <a onclick="showPage('register')" style="color:#00205b;font-weight:bold;cursor:pointer">Create Account</a></p>
+</div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="page-dashboard" class="hidden">
+<div class="dashboard">
+<div class="side">
+<button onclick="showTab('profile')">👤 My Profile</button>
+<button onclick="showTab('attendance')">📅 Attendance</button>
+<button onclick="showTab('subjects')">📚 Subjects</button>
+<button onclick="showTab('result')">📊 Results</button>
+<div id="teacherOnly" style="display:none"><hr><button onclick="showTab('allStudents')">👨‍🏫 All Students</button></div>
+<button onclick="logout()" style="background:#e74c3c;color:white;margin-top:20px">🚪 Logout</button>
+</div>
+<div class="main">
+<div id="tab-profile"><h2 id="welcomeName">Dashboard</h2><div id="profileBox" style="margin-top:15px;line-height:2;background:#f5f7fb;padding:18px;border-radius:10px"></div></div>
+<div id="tab-attendance" class="hidden"><h2>Attendance</h2><table id="attTable"></table></div>
+<div id="tab-subjects" class="hidden"><h2>Subjects</h2><ul id="subList" style="list-style:none;margin-top:12px"></ul></div>
+<div id="tab-result" class="hidden"><h2>Result</h2><table id="resTable"></table><h3 id="totalScore" style="margin-top:14px;color:#00205b"></h3><button onclick="window.print()" style="margin-top:12px;padding:10px 18px;background:#00a651;color:white;border:0;border-radius:6px">Print Result</button></div>
+<div id="tab-allStudents" class="hidden"><h2>All Students</h2><div id="studentsList"></div></div>
+</div>
+</div>
+</div>
+
+<footer>© 2026 Iganmode Grammar School | Principal: Miss SURURHOH | Email: kareemsururhoh@gmail.com | Phone: 08064838161</footer>
+
+<script>
+const DEFAULT_SUBJECTS=["Mathematics","English","Biology","Chemistry","Physics","Civic Education","Economics"];
+const DEFAULT_ATT=[{date:"2026-10-01",status:"Present"},{date:"2026-10-02",status:"Present"},{date:"2026-10-03",status:"Absent"}];
+const DEFAULT_RES=[{sub:"Mathematics",score:78},{sub:"English",score:65},{sub:"Biology",score:82}];
+
+function getUsers(){return JSON.parse(localStorage.getItem("iganmode_users")||"[]");}
+function saveUsers(u){localStorage.setItem("iganmode_users",JSON.stringify(u));}
+function showPage(p){
+ document.getElementById('page-landing').classList.add('hidden');
+ document.getElementById('page-register').classList.add('hidden');
+ document.getElementById('page-login').classList.add('hidden');
+ document.getElementById('page-dashboard').classList.add('hidden');
+ document.getElementById('page-'+p).classList.remove('hidden');
+ window.scrollTo(0,0);
+}
+function showTab(id){
+ document.getElementById('tab-profile').classList.add('hidden');
+ document.getElementById('tab-attendance').classList.add('hidden');
+ document.getElementById('tab-subjects').classList.add('hidden');
+ document.getElementById('tab-result').classList.add('hidden');
+ let all=document.getElementById('tab-allStudents'); if(all) all.classList.add('hidden');
+ document.getElementById('tab-'+id).classList.remove('hidden');
+}
+
+function doRegister(){
+ const name = document.getElementById('rName').value.trim();
+ const email = document.getElementById('rEmail').value.trim().toLowerCase();
+ const pass = document.getElementById('rPass').value;
+ const confirmPass = document.getElementById('rConfirmPass').value;
+ const roleValue = document.getElementById('role').value;
+ const sClass = document.getElementById('rClass').value || "SS2";
+ const childEmail = document.getElementById('rChild').value.trim().toLowerCase();
+
+ if(!name || !email || !pass || !confirmPass || !roleValue){
+   alert("Fill all fields: Name, Email, Create Password, Confirm Password, Role");
+   return;
+ }
+ if(pass !== confirmPass){
+   alert("Passwords do not match! Create Password and Confirm Password must be same");
+   return;
+ }
+ let users = getUsers();
+ if(users.find(u=>u.email===email)){
+   alert("This email already exists, please login");
+   showPage('login');
+   return;
+ }
+ users.push({name,email,pass,role:roleValue,sClass,childEmail,subjects:DEFAULT_SUBJECTS,attendance:DEFAULT_ATT,results:DEFAULT_RES});
+ saveUsers(users);
+ alert("Account created! Now you can login with your Enter Password");
+ showPage('login');
+}
+
+function doLogin(){
+ const email = document.getElementById('lEmail').value.trim().toLowerCase();
+ const pass = document.getElementById('lPass').value;
+ const user = getUsers().find(u=>u.email===email && u.pass===pass);
+ if(!user){alert("Wrong Email or Password");return;}
+ localStorage.setItem("iganmode_current",JSON.stringify(user));
+ loadDashboard(); showPage('dashboard'); showTab('profile');
+}
+function logout(){localStorage.removeItem("iganmode_current");showPage('landing');}
+function loadDashboard(){
+ let cur=JSON.parse(localStorage.getItem("iganmode_current")); if(!cur) return;
+ document.getElementById('welcomeName').innerText="Welcome, "+cur.name+" ("+cur.role+")";
+ document.getElementById('teacherOnly').style.display=cur.role==="teacher"?"block":"none";
+ let target=cur; 
+ if(cur.role==="parent"&&cur.childEmail){
+   let all=getUsers(); let child=all.find(u=>u.email===cur.childEmail); if(child) target=child;
+ }
+ document.getElementById('profileBox').innerHTML="<p><b>Name:</b> "+target.name+"</p><p><b>Class:</b> "+target.sClass+"</p><p><b>Role:</b> "+target.role+"</p><p><b>Email:</b> "+target.email+"</p><p><b>Phone:</b> 08064838161</p><p><b>School Email:</b> kareemsururhoh@gmail.com</p><p><b>Principal:</b> Miss SURURHOH</p>";
+ let att="<tr><th>Date</th><th>Status</th></tr>"; target.attendance.forEach(a=>{att+="<tr><td>"+a.date+"</td><td>"+a.status+"</td></tr>";}); document.getElementById('attTable').innerHTML=att;
+ document.getElementById('subList').innerHTML=target.subjects.map(s=>"<li style='background:#eef2f9;padding:11px;margin:7px 0;border-radius:8px;border-left:4px solid #00205b'>"+s+"</li>").join("");
+ let res="<tr><th>Subject</th><th>Score</th><th>Grade</th></tr>",total=0; target.results.forEach(r=>{let g=r.score>=70?"A":r.score>=60?"B":"C"; total+=r.score; res+="<tr><td>"+r.sub+"</td><td>"+r.score+"</td><td>"+g+"</td></tr>";}); document.getElementById('resTable').innerHTML=res; document.getElementById('totalScore').innerText="Total: "+total+" | Avg: "+Math.round(total/target.results.length)+"%";
+ let all=getUsers().filter(u=>u.role==="student"); document.getElementById('studentsList').innerHTML=all.map(s=>"<div style='background:#f5f7fb;padding:11px;margin:7px 0;border-radius:7px;display:flex;justify-content:space-between'><span><b>"+s.name+"</b> - "+s.sClass+"</span><button onclick=\"viewStudent('"+s.email+"')\" style='padding:6px 12px;background:#00205b;color:white;border:0;border-radius:5px'>View</button></div>").join("")||"No students yet";
+}
+function viewStudent(email){let s=getUsers().find(u=>u.email===email); if(!s)return; document.getElementById('profileBox').innerHTML="<p><b>Name:</b> "+s.name+"</p><p><b>Class:</b> "+s.sClass+"</p><p><b>Email:</b> "+s.email+"</p>"; showTab('profile');}
+</script>
+</body>
+</html>
